@@ -154,7 +154,7 @@ func (t *Trie) Put(key []byte, value []byte) {
 				// E 01020304
 				// + 010203 good
 				extNibbles, branchNibble, extRemainingnibbles := ext.Path[:matched], ext.Path[matched], ext.Path[matched+1:]
-				nodeBranchNibble, nodeLeafNibbles := nibbles[matched], nibbles[matched+1:]
+
 				branch := NewBranchNode()
 				if len(extRemainingnibbles) == 0 {
 					// E 0102030
@@ -167,8 +167,13 @@ func (t *Trie) Put(key []byte, value []byte) {
 					branch.SetBranch(branchNibble, newExt)
 				}
 
-				remainingLeaf := NewLeafNodeFromNibbles(nodeLeafNibbles, value)
-				branch.SetBranch(nodeBranchNibble, remainingLeaf)
+				if len(nibbles) == matched {
+					branch.SetValue(value)
+				} else {
+					nodeBranchNibble, nodeLeafNibbles := nibbles[matched], nibbles[matched+1:]
+					remainingLeaf := NewLeafNodeFromNibbles(nodeLeafNibbles, value)
+					branch.SetBranch(nodeBranchNibble, remainingLeaf)
+				}
 
 				// if there is no shared extension nibbles any more, then we don't need the extension node
 				// any more
