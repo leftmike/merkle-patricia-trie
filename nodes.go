@@ -1,4 +1,4 @@
-package main
+package merklepatriciatrie
 
 import "github.com/ethereum/go-ethereum/rlp"
 

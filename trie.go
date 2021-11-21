@@ -1,4 +1,4 @@
-package main
+package merklepatriciatrie
 
 type Trie struct {
 	root Node

@@ -1,4 +1,4 @@
-package main
+package merklepatriciatrie
 
 import (
 	"encoding/hex"
