@@ -1,4 +1,4 @@
-module merkle-patrica-trie
+module github.com/leftmike/merkle-patrica-trie
 
 go 1.13
 
