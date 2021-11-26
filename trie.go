@@ -8,6 +8,10 @@ func NewTrie() *Trie {
 	return &Trie{}
 }
 
+func (t *Trie) Root() Node {
+	return t.root
+}
+
 func (t *Trie) Hash() []byte {
 	if IsEmptyNode(t.root) {
 		return EmptyNodeHash

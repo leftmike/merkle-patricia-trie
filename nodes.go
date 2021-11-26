@@ -5,6 +5,7 @@ import "github.com/ethereum/go-ethereum/rlp"
 type Node interface {
 	Hash() []byte // common.Hash
 	Raw() []interface{}
+	Serialize() []byte
 }
 
 func Hash(node Node) []byte {
